@@ -10,7 +10,7 @@ int binarySearchClosest(vector<int>& numbers, int target){
     int R = numbers.size()-1;
     int M; 
     
-    while(L < R){//if L becomes R then take closest value
+    while(L <= R){//if L becomes R then take closest value
         M = floor((L+R)/2);
         if(target>numbers[M]){
             L = M+1;
@@ -30,7 +30,7 @@ int binarySearchClosest(vector<int>& numbers, int target){
 }
 
 
-vector<int> TwoSum(vector<int>& numbers, int target){
+vector<int> twoSum(vector<int>& numbers, int target){
     
     vector<int> bigHit;
     int subTarget, temp;
@@ -38,37 +38,30 @@ vector<int> TwoSum(vector<int>& numbers, int target){
     for(int i=0;i<numbers.size();i++){
         temp = target-numbers[i];
         subTarget = binarySearchClosest(numbers, temp);
-        if(target - numbers[i] == numbers[subTarget]){
+        if(subTarget==-1)
+            continue;
+        else if(subTarget == i)
+            continue;
+        else if(target - numbers[i] == numbers[subTarget]){
             if(i>subTarget){
-                bigHit.push_back(subTarget);
-                bigHit.push_back(i);
+                bigHit.push_back(subTarget+1);
+                bigHit.push_back(i+1);
 
             }
             else{
-                bigHit.push_back(i);
-                bigHit.push_back(subTarget);
+                bigHit.push_back(i+1);
+                bigHit.push_back(subTarget+1);
             }
             break;
         }
 
     }
 
-    cout<<"index 1: "<<bigHit[0]<<"\n";
-    cout<<"index 2: "<<bigHit[1]<<"\n";
+    // cout<<"index 1: "<<bigHit[0]<<"\n";
+    // cout<<"index 2: "<<bigHit[1]<<"\n";
 
    
 
     
     return bigHit;
-}
-
-
-
-int main(){
-
-    vector<int> numbers{0,0,1,2};
-    int target=0;
-    TwoSum(numbers, target);
-
-
 }
