@@ -10,7 +10,7 @@ int binarySearchClosest(vector<int>& numbers, int target){
     int R = numbers.size()-1;
     int M; 
     
-    while(L > R){//if L becomes R then take closest value
+    while(L < R){//if L becomes R then take closest value
         M = floor((L+R)/2);
         if(target>numbers[M]){
             L = M+1;
