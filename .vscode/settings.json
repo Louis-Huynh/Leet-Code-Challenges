@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "string_view": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "iostream": "cpp"
     }
 }
