@@ -4,9 +4,6 @@
 using std::vector;
 using std::cout;
 
-
-
-
 int findComplement(int num){
     
     bool binaryConvert=false;
@@ -53,9 +50,7 @@ int findComplement(int num){
         cout<<initBinary[noBinSize-i]*pow(2,temp)<<":"<<noBinSize-i<<"\n";
         temp--;
     }
-    for(int i=0;i<initBinary.size();i++){
-        initBinary[i];
-    }
+    
     cout<<"complement: "<<compNum<<"\n";
 
     return 0;
