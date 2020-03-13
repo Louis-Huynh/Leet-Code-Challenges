@@ -19,13 +19,14 @@ int Partition(vector<int>& unsorted, int left, int right){
             Swap(unsorted, i, j);
         }
     }
+    Swap(unsorted, i+1, right);
     return i+1;
 }
 
 void printSorted(vector<int>& unsorted){
     cout<<"Here is the sorted: \n";
     for(int i=0;i<unsorted.size();i++){
-        cout<<unsorted[i];
+        cout<<unsorted[i]<<",";
     }
 }
 
