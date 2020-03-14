@@ -1,5 +1,5 @@
 #include <iostream>
-#include string
+#include <string>
 using std::string;
 
 char findTheDifference(string s, string t){
