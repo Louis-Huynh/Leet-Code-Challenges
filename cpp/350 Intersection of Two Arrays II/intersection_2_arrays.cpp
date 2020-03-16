@@ -60,6 +60,37 @@ int binarySearch(vector<int> vec, int target){
     return -1;
 }
 
+// vector<int> intersect(vector<int>&nums1, vector<int>& nums2){
+//     vector<int> intersectionVec;
+//     QuickSort(nums1, 0, nums1.size()-1);
+//     QuickSort(nums2, 0, nums2.size()-1);
+
+//     printArray(nums1);
+//     cout<<"\n";
+
+//     printArray(nums2);
+//     bool gottem = false;
+//     int index1=0, index2=0;
+
+//     while(!gottem){
+//         if(index1 == nums1.size() || index2 == nums2.size()){
+//             cout<<"Out of bound. Exiting.\n";
+//             break;
+//         }
+//         if(nums1[index1] == nums2[index2]){
+//             intersectionVec.push_back(nums1[index1]);
+//             index2++;
+//         }
+//         index1++;
+//     }
+//     cout<<"\n";
+//     printArray(intersectionVec);
+   
+  
+//     return intersectionVec;
+// }
+
+
 vector<int> intersect(vector<int>&nums1, vector<int>& nums2){
     vector<int> intersectionVec;
     QuickSort(nums1, 0, nums1.size()-1);
@@ -70,20 +101,51 @@ vector<int> intersect(vector<int>&nums1, vector<int>& nums2){
 
     printArray(nums2);
     bool gottem = false;
-    int index1=0, index2=0;
+    int beeg=0, smol=0;
 
-    while(!gottem){
-        if(index1 == nums1.size() || index2 == nums2.size()){
-            cout<<"Out of bound. Exiting.\n";
-            break;
+    if(nums1.size()<nums2.size()){
+        
+
+        while(!gottem){
+            if(beeg == nums2.size() || smol == nums1.size()){
+                cout<<"Out of bound. Exiting.\n";
+                break;
+            }
+            
+            else if(nums1.at(smol) == nums2.at(beeg)){
+                intersectionVec.push_back(nums1[smol]);
+                smol++;
+            }
+            else if(nums1.at(smol)>nums2.at(beeg) && nums2.at(beeg+1)>nums1.at(smol))
+                smol++;
+
+            beeg++;
         }
-        if(nums1[index1] == nums2[index2]){
-            intersectionVec.push_back(nums1[index1]);
-            index2++;
-        }
-        index1++;
+
     }
-    cout<<"\n";
+
+    else if(nums1.size()>nums2.size()){
+        
+
+          while(!gottem){
+            if(beeg == nums1.size() || smol == nums2.size()){
+                cout<<"Out of bound. Exiting.\n";
+                break;
+            }
+            
+            else if(nums1.at(beeg) == nums2.at(smol)){
+                intersectionVec.push_back(nums2[smol]);
+                smol++;
+            }
+            else if(nums1.at(beeg)>nums2.at(smol) && nums2.at(smol)>nums1.at(beeg))
+                smol++;
+
+            beeg++;
+        }
+    
+    }
+
+    cout<<"newvec\n";
     printArray(intersectionVec);
    
   
