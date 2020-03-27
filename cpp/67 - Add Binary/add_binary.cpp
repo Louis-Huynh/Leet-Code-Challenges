@@ -28,7 +28,6 @@ string addBinary(string a, string b) {int longer, shorter;
     vector<int> buildBin;
     for(int i=0;i<longer;i++){
         if(i>shorter-1){
-            //only print long
             if(i==longer-1){
                 if((*bigBin)[longer-1-i] == '1' ){
                     if(carryOne == 1){
@@ -72,7 +71,6 @@ string addBinary(string a, string b) {int longer, shorter;
         }
         else{
             if((*bigBin)[longer-1-i] == '1' && (*smallBin)[shorter-1-i] == '1'){
-                //check if carryOn already true
                 if(carryOne > 0){
                     buildBin.push_back(1);
                     if(i==longer-1){
