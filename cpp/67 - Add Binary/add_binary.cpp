@@ -11,8 +11,7 @@ checklist:
 -if carryOne && !addOne -> add 1 -> both false
 -if !carryOne && !addOne -> add 0 -> both false 
 */
-string addBinary(string a, string b) {
-    int longer, shorter;
+string addBinary(string a, string b) {int longer, shorter;
     string* bigBin;
     string* smallBin;
 
@@ -29,33 +28,45 @@ string addBinary(string a, string b) {
         bigBin = &b;
         smallBin = &a;
     }
+   
     
 
     int carryOne = 0;
-    int buildBin = 0;
+    long long buildBin;
     for(int i=0;i<longer;i++){
         if(i>shorter-1){
             //only print long
             if(i==longer-1){
-                if((*bigBin)[longer-1-i] == '1' && carryOne == 1){
-                    buildBin += pow(10, i+1);
+                if((*bigBin)[longer-1-i] == '1' ){
+                    if(carryOne == 1)
+                        buildBin += pow(10, i+1);
+                    else{
+                        buildBin += pow(10, i);
+                    }
                 }
+            
             }
+
             else{
                 if((*bigBin)[longer-1-i] == '1'){
-                    if(carryOne == '0')
+                    if(carryOne == 0)
                         buildBin += pow(10, i);
+                    else{
+                        //do nothing
+                    }
                 }
-            else if((*bigBin)[i] == '0'){
-                //do nothing
-            }
-            else if((*bigBin)[i] == '1'){
-                 buildBin += pow(10, i);
-            }
-            else{
-                if(carryOne == '1')
-                    buildBin += pow(10, i);
-            }
+                else if((*bigBin)[longer-1-i] == '0'){
+                    if(carryOne == 1){
+                        buildBin += pow(10, i);
+                        carryOne--;
+                    }
+    
+                    else{
+                        //do nothing
+                    }
+                }
+        
+            
             }
             
             
@@ -75,7 +86,9 @@ string addBinary(string a, string b) {
                     if(i==longer-1){
                         buildBin += pow(10, i+1);
                     }
-                    carryOne++;
+                    else{
+                        carryOne++;
+                    }
                 }
                 
             }
